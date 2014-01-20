@@ -1,0 +1,14 @@
+select count(id) from votes where politician_id = 524;
+select count(votes.id) from votes join congress_members on votes.politician_id = congress_members.id where name = 'Olympia Snowe';
+select name from congress_members;
+select count(votes.id) from votes join congress_members on votes.politician_id = congress_members.id where name = 'Sen. Olympia Snowe';
+select count(votes.id) from votes join congress_members on votes.politician_id = congress_members.id where name = 'Rep. Erik Paulsen';
+select name, count(votes.id) from congress_members
+join votes on congress_members.id = politician_id
+group by congress_members.id
+order by count(votes.id) desc
+;
+select name, count(votes.id) from congress_members
+join votes on congress_members.id = politician_id
+group by congress_members.id
+order by count(votes.id);
