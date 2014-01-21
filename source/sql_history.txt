@@ -1,0 +1,1176 @@
+SELECT count(1)  FROM votes WHERE politician_id = 524;
+SELECT count(1) FROM votes JOIN congress_members ON congress_members.id = votes.politician_id WHERE congress_members.name = 'Olympia Snowe';
+SELECT * FROM congress_members LIMIT 10
+;
+SELECT count(1) FROM votes JOIN congress_members ON congress_members.id = votes.politician_id WHERE congress_members.name = 'Sen. Olympia Snowe';
+SELECT count(1) FROM votes JOIN congress_members ON congress_members.id = votes.politician_id WHERE congress_members.name = 'Rep. Erik Paulsen';
+SELECT name, count(1) AS count FROM votes JOIN congress_members ON congress_members.id = votes.politician_id GROUP BY name ORDER BY count DESC;
+SELECT name, count(1) AS count FROM votes JOIN congress_members ON congress_members.id = votes.politician_id GROUP BY name ORDER BY count;
+SELECT congress_members.id, name, count(1) AS count FROM votes JOIN congress_members ON congress_members.id = votes.politician_id GROUP BY name ORDER BY count;
+SELECT first_name, last_name, gender, party, count(1) FROM voters JOIN votes ON voters.id = votes.voter_id WHERE politician_id = 224;
+SELECT first_name, last_name, gender, party FROM voters JOIN votes ON voters.id = votes.voter_id WHERE politician_id = 224;
+SELECT name, location, grade_1996, count(1) FROM congress_members JOIN votes ON congress_members.id = votes.politician_id WHERE grade_current < 9 GROUP BY congress_members.id;
+SELECT name, location, grade_1996, count(1) FROM congress_members JOIN votes ON congress_members.id = votes.politician_id WHERE grade_current < 9 GROUP BY congress_members.id ORDER BY count(1);
+SELECT name, location, grade_1996, count(1) FROM congress_members JOIN votes ON congress_members.id = votes.politician_id WHERE grade_current < 9 GROUP BY congress_members.id ORDER BY count(1) DESC;
+SELECT location, COUNT(1) FROM congress_members JOIN votes ON congress_members.id = politician_id GROUP BY location ORDER BY count(1) DESC;
+SELECT location, COUNT(1) FROM congress_members JOIN votes ON congress_members.id = politician_id GROUP BY location ORDER BY count(1) DESC LIMIT 10;
+SELECT voters.* FROM votes JOIN congress_members ON congress_members.id = votes.politician_id
+JOIN voters ON voters.id = votes.voter_id
+WHERE location = 'CA';
+SELECT voters.* FROM votes JOIN congress_members ON congress_members.id = votes.politician_id
+JOIN voters ON voters.id = votes.voter_id
+WHERE location = 'CA';
+SELECT voters.* FROM votes JOIN congress_members ON congress_members.id = votes.politician_id
+JOIN voters ON voters.id = votes.voter_id
+WHERE location = 'CA';
+SELECT voters.*, COUNT(1) FROM votes JOIN voters ON voters.id = votes.voter_id GROUP BY voters.id HAVING count(1) > 2;
+SELECT voters.id, COUNT(1) FROM votes JOIN voters ON voters.id = votes.voter_id GROUP BY voters.id HAVING count(1) > 2;
+SELECT voters.*, COUNT(1) FROM votes JOIN voters ON voters.id = votes.voter_id GROUP BY voters.id HAVING count(1) > 2;
+SELECT voter_id, politician_id, count(1) FROM votes GROUP BY voter_id, politician_id HAVING count(1) >1;
+SELECT voters.*, COUNT(1) FROM votes JOIN voters ON voters.id = votes.voter_id GROUP BY voters.id HAVING count(1) > 2;
+SELECT voters.*, COUNT(1) FROM votes JOIN voters ON voters.id = votes.voter_id GROUP BY voters.id HAVING count(1) > 2;
+SELECT voter_id, politician_id, count(1) FROM votes GROUP BY voter_id, politician_id HAVING count(1) >1;
+SELECT first_name, last_name, congress_members.name AS voted_for, count(1) FROM votes
+JOIN voters ON voters.id = votes.voter_id
+JOIN congress_members ON congress_members.id = votes.politician_id
+GROUP BY voter_id, politician_id HAVING count(1) >1;
+  23
+Rep. Gregory Meek  23
+Rep. Hal Rogers    23
+Rep. Jason Chaffe  23
+Rep. Jeff Flake    23
+Rep. John Carter   23
+Rep. John Larson   23
+Rep. Lois Capps    23
+Rep. Mary Bono Ma  23
+Rep. Mike Turner   23
+Rep. Patrick Meeh  23
+Rep. Pete Visclos  23
+Rep. Rick Berg     23
+Rep. Rob Woodall   23
+Rep. Silver Reyes  23
+Rep. Steve Southe  23
+Rep. Ted Deutch    23
+Rep. Thad McCotte  23
+Rep. Todd Young    23
+Rep. Tom McClinto  23
+Rep. Vern Buchana  23
+Rep. W. Todd Akin  23
+Sen. Ben Cardin    23
+Sen. Jeff Session  23
+Sen. Joe Manchin   23
+Sen. Johnny Isaks  23
+Sen. Roger Wicker  23
+Sen. Tom Harkin    23
+Rep. Andy Harris   22
+Rep. Ben Lujan     22
+Rep. Ben Quayle    22
+Rep. Brian Higgin  22
+Rep. Chaka Fattah  22
+Rep. E. Scott Gar  22
+Rep. Earl Blumena  22
+Rep. Grace Napoli  22
+Rep. Hank Johnson  22
+Rep. Henry Waxman  22
+Rep. James Scott   22
+Rep. Janice Hahn   22
+Rep. John Lewis    22
+Rep. John Olver    22
+Rep. John Tierney  22
+Rep. Ken Calvert   22
+Rep. Kevin Brady   22
+Rep. Loretta Sanc  22
+Rep. Lynn Jenkins  22
+Rep. Maurice Hinc  22
+Rep. Mike Capuano  22
+Rep. Mike Pence    22
+Rep. Renee Ellmer  22
+Rep. Steve Chabot  22
+Rep. Tom Petri     22
+Sen. Dean Heller   22
+Sen. John Hoeven   22
+Sen. John Kerry    22
+Sen. Mark Pryor    22
+Sen. Max Baucus    22
+Sen. Olympia Snow  22
+Rep. Adam Smith    21
+Rep. Bill Flores   21
+Rep. Bob Goodlatt  21
+Rep. Carolyn McCa  21
+Rep. Charles Dent  21
+Rep. David Cicill  21
+Rep. David Dreier  21
+Rep. Diane Black   21
+Rep. Don Manzullo  21
+Rep. Elton Galleg  21
+Rep. Erik Paulsen  21
+Rep. Howard Coble  21
+Rep. Jan Schakows  21
+Rep. Jeff Miller   21
+Rep. Jim Clyburn   21
+Rep. Jo Bonner     21
+Rep. Joe Courtney  21
+Rep. John Sarbane  21
+Rep. John Shimkus  21
+Rep. Leonard Bosw  21
+Rep. Luis Gutierr  21
+Rep. Mario Diaz-B  21
+Rep. Marsha Black  21
+Rep. Michael Burg  21
+Rep. Mike Conaway  21
+Rep. Mike Kelly    21
+Rep. Mike Simpson  21
+Rep. Morgan Griff  21
+Rep. Peter DeFazi  21
+Rep. Rob Wittman   21
+Rep. Ron Paul      21
+Rep. Russ Carnaha  21
+Rep. Tim Walberg   21
+Rep. Tom Graves    21
+Rep. Walter Jones  21
+Sen. Bill Nelson   21
+Sen. David Vitter  21
+Sen. Dick Durbin   21
+Sen. Tom Carper    21
+Rep. Andre Carson  20
+Rep. Billy Long    20
+Rep. Charlie Gonz  20
+Rep. Dan Boren     20
+Rep. Daniel Lipin  20
+Rep. David Rivera  20
+Rep. Dennis Ross   20
+Rep. Donald Payne  20
+Rep. Ed Markey     20
+Rep. Ed Pastor     20
+Rep. Frederica Wi  20
+Rep. Geoff Davis   20
+Rep. Jeb Hensarli  20
+Rep. Joe Donnelly  20
+Rep. Joe Wilson    20
+Rep. Marcy Kaptur  20
+Rep. Mike Doyle    20
+Rep. Mike Honda    20
+Rep. Mike Michaud  20
+Rep. Norm Dicks    20
+Rep. Ron Kind      20
+Rep. Roscoe Bartl  20
+Rep. Scott Tipton  20
+Rep. Shelley Berk  20
+Rep. Tim Griffin   20
+Rep. Timothy Bish  20
+Rep. Vicky Hartzl  20
+Rep. Virginia Fox  20
+Sen. Dan Coats     20
+Sen. Daniel Akaka  20
+Sen. Jeff Bingama  20
+Sen. Jim Webb      20
+Sen. Kelly Ayotte  20
+Sen. Kirsten Gill  20
+Sen. Mike Crapo    20
+Sen. Pat Toomey    20
+Sen. Ron Wyden     20
+Sen. Tom Udall     20
+Rep. Allyson Schw  19
+Rep. Barbara Lee   19
+Rep. Bob Latta     19
+Rep. Bobby Schill  19
+Rep. Bobby Scott   19
+Rep. Brad Miller   19
+Rep. Buck McKeon   19
+Rep. Collin Peter  19
+Rep. Cynthia Lumm  19
+Rep. Debbie Wasse  19
+Rep. Denny Rehber  19
+Rep. Diana DeGett  19
+Rep. Donna Edward  19
+Rep. Eddie Johnso  19
+Rep. James Lankfo  19
+Rep. Jerrold Nadl  19
+Rep. Jim McDermot  19
+Rep. Jim Renacci   19
+Rep. Judy Biggert  19
+Rep. Keith Elliso  19
+Rep. Kevin Yoder   19
+Rep. Kristi Noem   19
+Rep. Lamar Smith   19
+Rep. Mark Critz    19
+Rep. Martin Heinr  19
+Rep. Nick Rahall   19
+Rep. Nita Lowey    19
+Rep. Pete Olson    19
+Rep. Pete Session  19
+Rep. Phil Roe      19
+Rep. Randy Neugeb  19
+Rep. Rob Andrews   19
+Rep. Sandy Levin   19
+Rep. Steny Hoyer   19
+Rep. Steve Israel  19
+Rep. Steve Womack  19
+Rep. Todd Rokita   19
+Rep. Tom Cole      19
+Sen. Ben Nelson    19
+Sen. Chris Coons   19
+Sen. Harry Reid    19
+Sen. Kay Hutchiso  19
+Sen. Mark Kirk     19
+Sen. Mary Landrie  19
+Sen. Mike Johanns  19
+Rep. Adam Kinzing  18
+Rep. Alcee Hastin  18
+Rep. Bob Brady     18
+Rep. Candice Mill  18
+Rep. Charlie Rang  18
+Rep. Dave Camp     18
+Rep. David Scott   18
+Rep. Dennis Kucin  18
+Rep. Doug Lamborn  18
+Rep. Ed Perlmutte  18
+Rep. Ed Towns      18
+Rep. Eric Cantor   18
+Rep. Frank Wolf    18
+Rep. G.K. Butterf  18
+Rep. Gregg Harper  18
+Rep. Gwen Moore    18
+Rep. Jack Kingsto  18
+Rep. Jaime Herrer  18
+Rep. John Campbel  18
+Rep. John Culbers  18
+Rep. John Fleming  18
+Rep. John Garamen  18
+Rep. Judy Chu      18
+Rep. Kathy Castor  18
+Rep. Kenny Marcha  18
+Rep. Lacy Clay     18
+Rep. Mark Amodei   18
+Rep. Marlin Stutz  18
+Rep. Mike Quigley  18
+Rep. Mike Thompso  18
+Rep. Peter Welch   18
+Rep. Phil Gingrey  18
+Rep. Robert Aderh  18
+Rep. Sandra Adams  18
+Rep. Sheila Jacks  18
+Rep. Steve Austri  18
+Rep. Tim Murphy    18
+Rep. Tim Ryan      18
+Rep. Tom Reed      18
+Rep. Trent Franks  18
+Rep. Wally Herger  18
+Sen. Al Franken    18
+Sen. Jack Reed     18
+Sen. Jim DeMint    18
+Sen. Jim Risch     18
+Sen. Marco Rubio   18
+Sen. Pat Roberts   18
+Sen. Patrick Leah  18
+Sen. Robert Menen  18
+Sen. Susan Collin  18
+Sen. Thad Cochran  18
+Rep. Aaron Schock  17
+Rep. Adrian Smith  17
+Rep. Al Green      17
+Rep. Barney Frank  17
+Rep. Bob Turner    17
+Rep. Brian Bilbra  17
+Rep. C.A. Dutch R  17
+Rep. Cedric Richm  17
+Rep. Colleen Hana  17
+Rep. Dave Reicher  17
+Rep. David Schwei  17
+Rep. Ed Royce      17
+Rep. Emanuel Clea  17
+Rep. G.T. Thompso  17
+Rep. Gary Peters   17
+Rep. Gus Biliraki  17
+Rep. Jackie Speie  17
+Rep. Jeff Duncan   17
+Rep. Jesse Jackso  17
+Rep. Jim Jordan    17
+Rep. Jim Langevin  17
+Rep. Jim Matheson  17
+Rep. Joe Baca      17
+Rep. Joe Crowley   17
+Rep. Joe Walsh     17
+Rep. John Duncan   17
+Rep. John Mica     17
+Rep. John Yarmuth  17
+Rep. Jose Serrano  17
+Rep. Kathy Hochul  17
+Rep. Kurt Schrade  17
+Rep. Lou Barletta  17
+Rep. Mac Thornber  17
+Rep. Mel Watt      17
+Rep. Michael McCa  17
+Rep. Paul Broun    17
+Rep. Quico Cansec  17
+Rep. Ralph Hall    17
+Rep. Reid Ribble   17
+Rep. Richard Hann  17
+Rep. Rush Holt     17
+Rep. Steve Cohen   17
+Rep. Sue Myrick    17
+Rep. Terri Sewell  17
+Rep. Tim Holden    17
+Sen. Amy Klobucha  17
+Sen. Carl Levin    17
+Sen. Debbie Stabe  17
+Sen. Frank Lauten  17
+Sen. Jeanne Shahe  17
+Sen. John McCain   17
+Sen. Michael Benn  17
+Sen. Scott Brown   17
+Sen. Tom Coburn    17
+Rep. Bill Pascrel  16
+Rep. Bill Shuster  16
+Rep. Blaine Luetk  16
+Rep. Brad Sherman  16
+Rep. Bruce Braley  16
+Rep. Chellie Ping  16
+Rep. Chip Cravaac  16
+Rep. Chuck Fleisc  16
+Rep. Corrine Brow  16
+Rep. Dan Burton    16
+Rep. Daniel Webst  16
+Rep. Eliot Engel   16
+Rep. Jay Inslee    16
+Rep. Jeff Landry   16
+Rep. John Dingell  16
+Rep. Larry Bucsho  16
+Rep. Larry Kissel  16
+Rep. Leonard Lanc  16
+Rep. Lynn Woolsey  16
+Rep. Maxine Water  16
+Rep. Mazie Hirono  16
+Rep. Mike Fitzpat  16
+Rep. Mike Pompeo   16
+Rep. Mike Ross     16
+Rep. Paul Ryan     16
+Rep. Rosa DeLauro  16
+Rep. Sam Graves    16
+Rep. Sam Johnson   16
+Rep. Stephen Lync  16
+Rep. Steve King    16
+Rep. Steven Palaz  16
+Rep. Thomas Marin  16
+Rep. Xavier Becer  16
+Rep. Yvette Clark  16
+Sen. Barbara Miku  16
+Sen. Dianne Feins  16
+Sen. Jon Kyl       16
+Sen. Kent Conrad   16
+Sen. Mark Udall    16
+Rep. Albio Sires   15
+Rep. Ann Buerkle   15
+Rep. Bennie Thomp  15
+Rep. Bill Keating  15
+Rep. Dan Lungren   15
+Rep. Dana Rohraba  15
+Rep. Danny Davis   15
+Rep. Doc Hastings  15
+Rep. Fred Upton    15
+Rep. Jeff Fortenb  15
+Rep. Jerry Costel  15
+Rep. Jim Gerlach   15
+Rep. Joe Heck      15
+Rep. John Sulliva  15
+Rep. Kay Granger   15
+Rep. Louie Gohmer  15
+Rep. Mick Mulvane  15
+Rep. Nan Hayworth  15
+Rep. Niki Tsongas  15
+Rep. Pat Tiberi    15
+Rep. Pete Stark    15
+Rep. Rick Crawfor  15
+Rep. Robert Hurt   15
+Rep. Steve Pearce  15
+Rep. Ted Poe       15
+Rep. Tom Price     15
+Sen. Herb Kohl     15
+Sen. Jay Rockefel  15
+Sen. John Cornyn   15
+Sen. Lisa Murkows  15
+Sen. Mike Lee      15
+Sen. Patty Murray  15
+Sen. Richard Luga  15
+Sen. Tim Johnson   15
+Rep. Bill Huizeng  14
+Rep. Bill Owens    14
+Rep. Blake Farent  14
+Rep. Bob Filner    14
+Rep. Carolyn Malo  14
+Rep. Chris Smith   14
+Rep. Connie Mack   14
+Rep. Cory Gardner  14
+Rep. Dave Loebsac  14
+Rep. Elijah Cummi  14
+Rep. Gary Miller   14
+Rep. Greg Walden   14
+Rep. John Boehner  14
+Rep. John Conyers  14
+Rep. Lloyd Dogget  14
+Rep. Lucille Royb  14
+Rep. Martha Roby   14
+Rep. Mike Coffman  14
+Rep. Paul Tonko    14
+Rep. Spencer Bach  14
+Rep. Steve Rothma  14
+Rep. Steven Stive  14
+Rep. Tim Scott     14
+Rep. Tom Rooney    14
+Sen. Barbara Boxe  14
+Sen. C. Saxby Cha  14
+Sen. Chuck Schume  14
+Sen. Claire McCas  14
+Sen. Jeff Merkley  14
+Sen. John Boozman  14
+Sen. John Thune    14
+Sen. Mark Begich   14
+Sen. Rand Paul     14
+Sen. Rob Portman   14
+Rep. Allen West    13
+Rep. Bill Posey    13
+Rep. Christopher   13
+Rep. Dennis Cardo  13
+Rep. Don Young     13
+Rep. Duncan Hunte  13
+Rep. Frank Lucas   13
+Rep. Gerry Connol  13
+Rep. Jean Schmidt  13
+Rep. Jim Cooper    13
+Rep. Justin Amash  13
+Rep. Tim Johnson   13
+Sen. Chuck Grassl  13
+Sen. Jim Inhofe    13
+Sen. Lindsey Grah  13
+Sen. Mike Enzi     13
+Sen. Roy Blunt     13
+Rep. C. W. Bill Y  12
+Rep. Chris Van Ho  12
+Rep. David Price   12
+Rep. Jerry Lewis   12
+Rep. Jerry McNern  12
+Rep. Joe Pitts     12
+Rep. John Carney   12
+Rep. Karen Bass    12
+Rep. Lynn Westmor  12
+Rep. Raul Labrado  12
+Rep. Rodney Alexa  12
+Rep. Sean Duffy    12
+Rep. Tim Walz      12
+Sen. Mitch McConn  12
+Sen. Richard Shel  12
+Rep. David McKinl  11
+Rep. Frank Guinta  11
+Rep. Gene Green    11
+Rep. Lee Terry     11
+Rep. Randy Forbes  11
+Rep. Rodney Freli  11
+Rep. Steven LaTou  11
+Sen. Sheldon Whit  11
+Rep. Betty McColl  10
+Rep. Doris Matsui  10
+Rep. Heath Shuler  10
+Rep. John Kline    10
+Rep. Steven Guthr  10
+Sen. Orrin Hatch   10
+Rep. Alan Nunnele  9
+Rep. Robert Dold   9
+Rep. Ileana Ros-L  8
+Rep. Tim Huelskam  8
+Rep. Bill Cassidy  7
+Rep. Jim Sensenbr  7
+sqlite>
+
+
+5)
+sqlite> SELECT name, count(1) AS count FROM votes JOIN congress_members ON congress_members.id = votes.politician_id GROUP BY name ORDER BY count;
+name               count
+-----------------  ----------
+Rep. Bill Cassidy  7
+Rep. Jim Sensenbr  7
+Rep. Ileana Ros-L  8
+Rep. Tim Huelskam  8
+Rep. Alan Nunnele  9
+Rep. Robert Dold   9
+Rep. Betty McColl  10
+Rep. Doris Matsui  10
+Rep. Heath Shuler  10
+Rep. John Kline    10
+Rep. Steven Guthr  10
+Sen. Orrin Hatch   10
+Rep. David McKinl  11
+Rep. Frank Guinta  11
+Rep. Gene Green    11
+Rep. Lee Terry     11
+Rep. Randy Forbes  11
+Rep. Rodney Freli  11
+Rep. Steven LaTou  11
+Sen. Sheldon Whit  11
+Rep. C. W. Bill Y  12
+Rep. Chris Van Ho  12
+Rep. David Price   12
+Rep. Jerry Lewis   12
+Rep. Jerry McNern  12
+Rep. Joe Pitts     12
+Rep. John Carney   12
+Rep. Karen Bass    12
+Rep. Lynn Westmor  12
+Rep. Raul Labrado  12
+Rep. Rodney Alexa  12
+Rep. Sean Duffy    12
+Rep. Tim Walz      12
+Sen. Mitch McConn  12
+Sen. Richard Shel  12
+Rep. Allen West    13
+Rep. Bill Posey    13
+Rep. Christopher   13
+Rep. Dennis Cardo  13
+Rep. Don Young     13
+Rep. Duncan Hunte  13
+Rep. Frank Lucas   13
+Rep. Gerry Connol  13
+Rep. Jean Schmidt  13
+Rep. Jim Cooper    13
+Rep. Justin Amash  13
+Rep. Tim Johnson   13
+Sen. Chuck Grassl  13
+Sen. Jim Inhofe    13
+Sen. Lindsey Grah  13
+Sen. Mike Enzi     13
+Sen. Roy Blunt     13
+Rep. Bill Huizeng  14
+Rep. Bill Owens    14
+Rep. Blake Farent  14
+Rep. Bob Filner    14
+Rep. Carolyn Malo  14
+Rep. Chris Smith   14
+Rep. Connie Mack   14
+Rep. Cory Gardner  14
+Rep. Dave Loebsac  14
+Rep. Elijah Cummi  14
+Rep. Gary Miller   14
+Rep. Greg Walden   14
+Rep. John Boehner  14
+Rep. John Conyers  14
+Rep. Lloyd Dogget  14
+Rep. Lucille Royb  14
+Rep. Martha Roby   14
+Rep. Mike Coffman  14
+Rep. Paul Tonko    14
+Rep. Spencer Bach  14
+Rep. Steve Rothma  14
+Rep. Steven Stive  14
+Rep. Tim Scott     14
+Rep. Tom Rooney    14
+Sen. Barbara Boxe  14
+Sen. C. Saxby Cha  14
+Sen. Chuck Schume  14
+Sen. Claire McCas  14
+Sen. Jeff Merkley  14
+Sen. John Boozman  14
+Sen. John Thune    14
+Sen. Mark Begich   14
+Sen. Rand Paul     14
+Sen. Rob Portman   14
+Rep. Albio Sires   15
+Rep. Ann Buerkle   15
+Rep. Bennie Thomp  15
+Rep. Bill Keating  15
+Rep. Dan Lungren   15
+Rep. Dana Rohraba  15
+Rep. Danny Davis   15
+Rep. Doc Hastings  15
+Rep. Fred Upton    15
+Rep. Jeff Fortenb  15
+Rep. Jerry Costel  15
+Rep. Jim Gerlach   15
+Rep. Joe Heck      15
+Rep. John Sulliva  15
+Rep. Kay Granger   15
+Rep. Louie Gohmer  15
+Rep. Mick Mulvane  15
+Rep. Nan Hayworth  15
+Rep. Niki Tsongas  15
+Rep. Pat Tiberi    15
+Rep. Pete Stark    15
+Rep. Rick Crawfor  15
+Rep. Robert Hurt   15
+Rep. Steve Pearce  15
+Rep. Ted Poe       15
+Rep. Tom Price     15
+Sen. Herb Kohl     15
+Sen. Jay Rockefel  15
+Sen. John Cornyn   15
+Sen. Lisa Murkows  15
+Sen. Mike Lee      15
+Sen. Patty Murray  15
+Sen. Richard Luga  15
+Sen. Tim Johnson   15
+Rep. Bill Pascrel  16
+Rep. Bill Shuster  16
+Rep. Blaine Luetk  16
+Rep. Brad Sherman  16
+Rep. Bruce Braley  16
+Rep. Chellie Ping  16
+Rep. Chip Cravaac  16
+Rep. Chuck Fleisc  16
+Rep. Corrine Brow  16
+Rep. Dan Burton    16
+Rep. Daniel Webst  16
+Rep. Eliot Engel   16
+Rep. Jay Inslee    16
+Rep. Jeff Landry   16
+Rep. John Dingell  16
+Rep. Larry Bucsho  16
+Rep. Larry Kissel  16
+Rep. Leonard Lanc  16
+Rep. Lynn Woolsey  16
+Rep. Maxine Water  16
+Rep. Mazie Hirono  16
+Rep. Mike Fitzpat  16
+Rep. Mike Pompeo   16
+Rep. Mike Ross     16
+Rep. Paul Ryan     16
+Rep. Rosa DeLauro  16
+Rep. Sam Graves    16
+Rep. Sam Johnson   16
+Rep. Stephen Lync  16
+Rep. Steve King    16
+Rep. Steven Palaz  16
+Rep. Thomas Marin  16
+Rep. Xavier Becer  16
+Rep. Yvette Clark  16
+Sen. Barbara Miku  16
+Sen. Dianne Feins  16
+Sen. Jon Kyl       16
+Sen. Kent Conrad   16
+Sen. Mark Udall    16
+Rep. Aaron Schock  17
+Rep. Adrian Smith  17
+Rep. Al Green      17
+Rep. Barney Frank  17
+Rep. Bob Turner    17
+Rep. Brian Bilbra  17
+Rep. C.A. Dutch R  17
+Rep. Cedric Richm  17
+Rep. Colleen Hana  17
+Rep. Dave Reicher  17
+Rep. David Schwei  17
+Rep. Ed Royce      17
+Rep. Emanuel Clea  17
+Rep. G.T. Thompso  17
+Rep. Gary Peters   17
+Rep. Gus Biliraki  17
+Rep. Jackie Speie  17
+Rep. Jeff Duncan   17
+Rep. Jesse Jackso  17
+Rep. Jim Jordan    17
+Rep. Jim Langevin  17
+Rep. Jim Matheson  17
+Rep. Joe Baca      17
+Rep. Joe Crowley   17
+Rep. Joe Walsh     17
+Rep. John Duncan   17
+Rep. John Mica     17
+Rep. John Yarmuth  17
+Rep. Jose Serrano  17
+Rep. Kathy Hochul  17
+Rep. Kurt Schrade  17
+Rep. Lou Barletta  17
+Rep. Mac Thornber  17
+Rep. Mel Watt      17
+Rep. Michael McCa  17
+Rep. Paul Broun    17
+Rep. Quico Cansec  17
+Rep. Ralph Hall    17
+Rep. Reid Ribble   17
+Rep. Richard Hann  17
+Rep. Rush Holt     17
+Rep. Steve Cohen   17
+Rep. Sue Myrick    17
+Rep. Terri Sewell  17
+Rep. Tim Holden    17
+Sen. Amy Klobucha  17
+Sen. Carl Levin    17
+Sen. Debbie Stabe  17
+Sen. Frank Lauten  17
+Sen. Jeanne Shahe  17
+Sen. John McCain   17
+Sen. Michael Benn  17
+Sen. Scott Brown   17
+Sen. Tom Coburn    17
+Rep. Adam Kinzing  18
+Rep. Alcee Hastin  18
+Rep. Bob Brady     18
+Rep. Candice Mill  18
+Rep. Charlie Rang  18
+Rep. Dave Camp     18
+Rep. David Scott   18
+Rep. Dennis Kucin  18
+Rep. Doug Lamborn  18
+Rep. Ed Perlmutte  18
+Rep. Ed Towns      18
+Rep. Eric Cantor   18
+Rep. Frank Wolf    18
+Rep. G.K. Butterf  18
+Rep. Gregg Harper  18
+Rep. Gwen Moore    18
+Rep. Jack Kingsto  18
+Rep. Jaime Herrer  18
+Rep. John Campbel  18
+Rep. John Culbers  18
+Rep. John Fleming  18
+Rep. John Garamen  18
+Rep. Judy Chu      18
+Rep. Kathy Castor  18
+Rep. Kenny Marcha  18
+Rep. Lacy Clay     18
+Rep. Mark Amodei   18
+Rep. Marlin Stutz  18
+Rep. Mike Quigley  18
+Rep. Mike Thompso  18
+Rep. Peter Welch   18
+Rep. Phil Gingrey  18
+Rep. Robert Aderh  18
+Rep. Sandra Adams  18
+Rep. Sheila Jacks  18
+Rep. Steve Austri  18
+Rep. Tim Murphy    18
+Rep. Tim Ryan      18
+Rep. Tom Reed      18
+Rep. Trent Franks  18
+Rep. Wally Herger  18
+Sen. Al Franken    18
+Sen. Jack Reed     18
+Sen. Jim DeMint    18
+Sen. Jim Risch     18
+Sen. Marco Rubio   18
+Sen. Pat Roberts   18
+Sen. Patrick Leah  18
+Sen. Robert Menen  18
+Sen. Susan Collin  18
+Sen. Thad Cochran  18
+Rep. Allyson Schw  19
+Rep. Barbara Lee   19
+Rep. Bob Latta     19
+Rep. Bobby Schill  19
+Rep. Bobby Scott   19
+Rep. Brad Miller   19
+Rep. Buck McKeon   19
+Rep. Collin Peter  19
+Rep. Cynthia Lumm  19
+Rep. Debbie Wasse  19
+Rep. Denny Rehber  19
+Rep. Diana DeGett  19
+Rep. Donna Edward  19
+Rep. Eddie Johnso  19
+Rep. James Lankfo  19
+Rep. Jerrold Nadl  19
+Rep. Jim McDermot  19
+Rep. Jim Renacci   19
+Rep. Judy Biggert  19
+Rep. Keith Elliso  19
+Rep. Kevin Yoder   19
+Rep. Kristi Noem   19
+Rep. Lamar Smith   19
+Rep. Mark Critz    19
+Rep. Martin Heinr  19
+Rep. Nick Rahall   19
+Rep. Nita Lowey    19
+Rep. Pete Olson    19
+Rep. Pete Session  19
+Rep. Phil Roe      19
+Rep. Randy Neugeb  19
+Rep. Rob Andrews   19
+Rep. Sandy Levin   19
+Rep. Steny Hoyer   19
+Rep. Steve Israel  19
+Rep. Steve Womack  19
+Rep. Todd Rokita   19
+Rep. Tom Cole      19
+Sen. Ben Nelson    19
+Sen. Chris Coons   19
+Sen. Harry Reid    19
+Sen. Kay Hutchiso  19
+Sen. Mark Kirk     19
+Sen. Mary Landrie  19
+Sen. Mike Johanns  19
+Rep. Andre Carson  20
+Rep. Billy Long    20
+Rep. Charlie Gonz  20
+Rep. Dan Boren     20
+Rep. Daniel Lipin  20
+Rep. David Rivera  20
+Rep. Dennis Ross   20
+Rep. Donald Payne  20
+Rep. Ed Markey     20
+Rep. Ed Pastor     20
+Rep. Frederica Wi  20
+Rep. Geoff Davis   20
+Rep. Jeb Hensarli  20
+Rep. Joe Donnelly  20
+Rep. Joe Wilson    20
+Rep. Marcy Kaptur  20
+Rep. Mike Doyle    20
+Rep. Mike Honda    20
+Rep. Mike Michaud  20
+Rep. Norm Dicks    20
+Rep. Ron Kind      20
+Rep. Roscoe Bartl  20
+Rep. Scott Tipton  20
+Rep. Shelley Berk  20
+Rep. Tim Griffin   20
+Rep. Timothy Bish  20
+Rep. Vicky Hartzl  20
+Rep. Virginia Fox  20
+Sen. Dan Coats     20
+Sen. Daniel Akaka  20
+Sen. Jeff Bingama  20
+Sen. Jim Webb      20
+Sen. Kelly Ayotte  20
+Sen. Kirsten Gill  20
+Sen. Mike Crapo    20
+Sen. Pat Toomey    20
+Sen. Ron Wyden     20
+Sen. Tom Udall     20
+Rep. Adam Smith    21
+Rep. Bill Flores   21
+Rep. Bob Goodlatt  21
+Rep. Carolyn McCa  21
+Rep. Charles Dent  21
+Rep. David Cicill  21
+Rep. David Dreier  21
+Rep. Diane Black   21
+Rep. Don Manzullo  21
+Rep. Elton Galleg  21
+Rep. Erik Paulsen  21
+Rep. Howard Coble  21
+Rep. Jan Schakows  21
+Rep. Jeff Miller   21
+Rep. Jim Clyburn   21
+Rep. Jo Bonner     21
+Rep. Joe Courtney  21
+Rep. John Sarbane  21
+Rep. John Shimkus  21
+Rep. Leonard Bosw  21
+Rep. Luis Gutierr  21
+Rep. Mario Diaz-B  21
+Rep. Marsha Black  21
+Rep. Michael Burg  21
+Rep. Mike Conaway  21
+Rep. Mike Kelly    21
+Rep. Mike Simpson  21
+Rep. Morgan Griff  21
+Rep. Peter DeFazi  21
+Rep. Rob Wittman   21
+Rep. Ron Paul      21
+Rep. Russ Carnaha  21
+Rep. Tim Walberg   21
+Rep. Tom Graves    21
+Rep. Walter Jones  21
+Sen. Bill Nelson   21
+Sen. David Vitter  21
+Sen. Dick Durbin   21
+Sen. Tom Carper    21
+Rep. Andy Harris   22
+Rep. Ben Lujan     22
+Rep. Ben Quayle    22
+Rep. Brian Higgin  22
+Rep. Chaka Fattah  22
+Rep. E. Scott Gar  22
+Rep. Earl Blumena  22
+Rep. Grace Napoli  22
+Rep. Hank Johnson  22
+Rep. Henry Waxman  22
+Rep. James Scott   22
+Rep. Janice Hahn   22
+Rep. John Lewis    22
+Rep. John Olver    22
+Rep. John Tierney  22
+Rep. Ken Calvert   22
+Rep. Kevin Brady   22
+Rep. Loretta Sanc  22
+Rep. Lynn Jenkins  22
+Rep. Maurice Hinc  22
+Rep. Mike Capuano  22
+Rep. Mike Pence    22
+Rep. Renee Ellmer  22
+Rep. Steve Chabot  22
+Rep. Tom Petri     22
+Sen. Dean Heller   22
+Sen. John Hoeven   22
+Sen. John Kerry    22
+Sen. Mark Pryor    22
+Sen. Max Baucus    22
+Sen. Olympia Snow  22
+Rep. Ander Crensh  23
+Rep. Anna Eshoo    23
+Rep. Bobby Rush    23
+Rep. Gregory Meek  23
+Rep. Hal Rogers    23
+Rep. Jason Chaffe  23
+Rep. Jeff Flake    23
+Rep. John Carter   23
+Rep. John Larson   23
+Rep. Lois Capps    23
+Rep. Mary Bono Ma  23
+Rep. Mike Turner   23
+Rep. Patrick Meeh  23
+Rep. Pete Visclos  23
+Rep. Rick Berg     23
+Rep. Rob Woodall   23
+Rep. Silver Reyes  23
+Rep. Steve Southe  23
+Rep. Ted Deutch    23
+Rep. Thad McCotte  23
+Rep. Todd Young    23
+Rep. Tom McClinto  23
+Rep. Vern Buchana  23
+Rep. W. Todd Akin  23
+Sen. Ben Cardin    23
+Sen. Jeff Session  23
+Sen. Joe Manchin   23
+Sen. Johnny Isaks  23
+Sen. Roger Wicker  23
+Sen. Tom Harkin    23
+Rep. Betty Sutton  24
+Rep. Bill Johnson  24
+Rep. Bob Gibbs     24
+Rep. Charles Bous  24
+Rep. Charlie Bass  24
+Rep. Jim Himes     24
+Rep. Jim Moran     24
+Rep. Jon Runyan    24
+Rep. Laura Richar  24
+Rep. Mike Grimm    24
+Rep. Mo Brooks     24
+Rep. Nancy Pelosi  24
+Rep. Pete King     24
+Rep. Rick Larsen   24
+Rep. Susan Davis   24
+Rep. Todd Platts   24
+Sen. Bob Casey     24
+Sen. Bob Corker    24
+Sen. Richard Burr  24
+Sen. Sherrod Brow  24
+Rep. Adam Schiff   25
+Rep. Darrell Issa  25
+Rep. Ed Whitfield  25
+Rep. Frank LoBion  25
+Rep. George Mille  25
+Rep. Hansen Clark  25
+Rep. Jason Altmir  25
+Rep. Jeff Denham   25
+Rep. Jo Ann Emers  25
+Rep. Michele Bach  25
+Rep. Nydia Velazq  25
+Rep. Peter Roskam  25
+Rep. Raul Grijalv  25
+Rep. Richard Nuge  25
+Rep. Sanford Bish  25
+Rep. Steve Scalis  25
+Rep. Trey Gowdy    25
+Sen. Bernie Sande  25
+Sen. Daniel Inouy  25
+Sen. Jon Tester    25
+Sen. Richard Blum  25
+Rep. Ben Chandler  26
+Rep. Chris Murphy  26
+Rep. Cliff Stearn  26
+Rep. Jared Polis   26
+Rep. Jim McGovern  26
+Rep. Joe Barton    26
+Rep. John Barrow   26
+Rep. Mike McIntyr  26
+Rep. Patrick McHe  26
+Rep. Randy Hultgr  26
+Rep. Richard Neal  26
+Rep. Rob Bishop    26
+Rep. Sam Farr      26
+Rep. Scott Rigell  26
+Rep. Shelley Capi  26
+Sen. Lamar Alexan  26
+Rep. Gary Ackerma  27
+Rep. Kevin McCart  27
+Rep. Louise Slaug  27
+Rep. Paul Gosar    27
+Rep. Stephen Finc  27
+Sen. John Barrass  27
+Sen. Mark Warner   27
+Rep. Devin Nunes   28
+Rep. Henry Cuella  28
+Rep. Scott DesJar  28
+Rep. Tom Latham    28
+Rep. Zoe Lofgren   28
+Sen. Jerry Moran   28
+Sen. Joseph Liebe  28
+Sen. Kay Hagan     28
+Sen. Ron Johnson   28
+Rep. Marcia Fudge  29
+Rep. Mike Rogers   29
+Rep. Ruben Hinojo  29
+Sen. Maria Cantwe  30
+Rep. Dale Kildee   31
+Rep. Frank Pallon  31
+Rep. Jim Costa     31
+Rep. Tammy Baldwi  31
+Rep. Dan Benishek  32
+sqlite>
+
+
+
+____________________________RELEASE 2 _____________________________
+
+1)
+224         Rep. Dan Benishek  32
+sqlite> SELECT first_name, last_name, gender, party, count(1) FROM voters JOIN votes ON voters.id = votes.voter_id WHERE politician_id = 224;
+first_name  last_name   gender      party       count(1)
+----------  ----------  ----------  ----------  ----------
+Merl        Marquardt   male        democrat    32
+sqlite> SELECT first_name, last_name, gender, party, FROM voters JOIN votes ON voters.id = votes.voter_id WHERE politician_id = 224;
+Error: near "FROM": syntax error
+sqlite> SELECT first_name, last_name, gender, party FROM voters JOIN votes ON voters.id = votes.voter_id WHERE politician_id = 224;
+first_name  last_name   gender      party
+----------  ----------  ----------  -----------
+Watson      Mueller     female      independent
+Reed        Schneider   male        democrat
+Frederique  Schuppe     male        republican
+Thurman     Hills       female      republican
+Heloise     Schowalter  female      democrat
+Halie       Barton      female      democrat
+Valentina   Wyman       female      republican
+Althea      Bergnaum    female      democrat
+River       Jaskolski   female      republican
+Arden       Crist       female      green
+Dax         Quitzon     female      republican
+Roberta     Hahn        male        democrat
+Emily       Satterfiel  female      na
+Mariane     Becker      male        democrat
+Hobart      Tromp       male        democrat
+Royce       Bogisich    male        republican
+Sylvester   Wilderman   male        democrat
+Korbin      Jakubowski  female      green
+Elliott     Sawayn      male        republican
+Augusta     Turner      female      na
+Kamren      Beahan      female      republican
+Uriel       Pacocha     male        democrat
+Jedediah    Emard       female      independent
+Bryon       Kuhn        female      democrat
+Ashly       Davis       female      na
+Reanna      Homenick    male        republican
+Brycen      Cole        male        republican
+Sydni       Balistreri  male        democrat
+Damien      Daugherty   female      na
+Julio       Murazik     female      republican
+Theodore    Ferry       female      democrat
+Merl        Marquardt   male        democrat
+sqlite>
+
+
+
+
+
+2)
+sqlite> SELECT name, location, grade_1996, count(1) FROM congress_members JOIN votes ON congress_members.id = votes.politician_id WHERE grade_current < 9 GROUP BY congress_members.id ORDER BY count(1) DESC;
+name              location    grade_1996  count(1)
+----------------  ----------  ----------  ----------
+Sen. Ron Johnson  WI          8.62470174  28
+Rep. Rob Woodall  GA          8.0191087   23
+Rep. W. Todd Aki  MO          8.14042351  23
+Rep. Jeff Flake   AZ          9.14056569  23
+Rep. Jason Chaff  UT          9.33956593  23
+Sen. Jeff Sessio  AL          9.35276918  23
+Rep. Ander Crens  FL          11.2252162  23
+Rep. John Lewis   GA          8.93871150  22
+Rep. Tom Graves   GA          8.60018425  21
+Rep. Peter DeFaz  OR          9.83226533  21
+Rep. Tim Griffin  AR          8.12915625  20
+Rep. Vicky Hartz  MO          8.44408234  20
+Rep. Roscoe Bart  MD          8.92874717  20
+Rep. Phil Roe     TN          8.64239053  19
+Rep. Keith Ellis  MN          9.30084241  19
+Rep. Collin Pete  MN          10.4189890  19
+Rep. John Campbe  CA          8.87304557  18
+Rep. John Garame  CA          8.92391950  18
+Rep. Adam Kinzin  IL          8.99562175  18
+Rep. Jack Kingst  GA          9.24524385  18
+Rep. David Schwe  AZ          8.60610256  17
+Rep. Joe Walsh    IL          8.90701586  17
+Sen. Frank Laute  NJ          10.4663817  17
+Rep. Jeff Landry  LA          8.64417703  16
+Sen. Barbara Mik  MD          9.80585324  16
+Rep. Mick Mulvan  SC          7.94570402  15
+Rep. Ted Poe      TX          9.65661133  15
+Rep. Steve Pearc  NM          10.4056838  15
+Sen. Rand Paul    KY          8.03983252  14
+Sen. Barbara Box  CA          9.40636772  14
+Rep. Spencer Bac  AL          10.6004755  14
+Rep. Connie Mack  FL          12.0358409  14
+Sen. Jim Inhofe   OK          10.1077764  13
+Rep. Don Young    AK          12.3363882  13
+Rep. Sean Duffy   WI          8.08870609  12
+
+
+3)
+sqlite> SELECT location, COUNT(1) FROM congress_members JOIN votes ON congress_members.id = politician_id GROUP BY location ORDER BY count(1) DESC LIMIT 10;
+location    COUNT(1)
+----------  ----------
+CA          1025
+TX          643
+NY          582
+FL          497
+PA          400
+IL          395
+OH          380
+MI          333
+NC          297
+GA          296
+
+SELECT voters.* FROM votes JOIN congress_members ON congress_members.id = votes.politician_id
+JOIN voters ON voters.id = votes.voter_id
+WHERE location = 'CA';
+
+see attached file 'question3.log'
+
+
+
+4)
+SELECT voters.*, COUNT(1) FROM votes JOIN voters ON voters.id = votes.voter_id GROUP BY voters.id HAVING count(1) > 2;
+
+See attached file 'question4.log'
+
+
+
+5)
+
+SELECT first_name, last_name, congress_members.name AS voted_for, count(1) FROM votes
+JOIN voters ON voters.id = votes.voter_id
+JOIN congress_members ON congress_members.id = votes.politician_id
+GROUP BY voter_id, politician_id HAVING count(1) >1;
+
+sqlite> SELECT first_name, last_name, congress_members.name AS voted_for, count(1) FROM votes
+   ...> JOIN voters ON voters.id = votes.voter_id
+   ...> JOIN congress_members ON congress_members.id = votes.politician_id
+   ...> GROUP BY voter_id, politician_id HAVING count(1) >1;
+first_name  last_name   voted_for         count(1)
+----------  ----------  ----------------  ----------
+Dallas      Padberg     Rep. Andy Harris  2
+Mckayla     Kilback     Rep. Joe Wilson   2
+Kayley      Rohan       Rep. Dale Kildee  2
+Amara       Wyman       Rep. Steve Scali  2
+Jakayla     Wintheiser  Rep. Donna Edwar  2
+Glennie     Raynor      Rep. Stephen Fin  2
+Nayeli      Ryan        Sen. Sherrod Bro  2
+Armand      Effertz     Rep. Todd Platts  2
+Adah        Flatley     Rep. Jim Costa    2
+Christiana  Schamberge  Rep. Jeff Forten  2
+Jules       Larkin      Rep. Dennis Ross  2
+Cynthia     Bruen       Rep. Mike Simpso  2
+Efrain      Collier     Sen. Ron Johnson  2
+Aubree      Mohr        Rep. Collin Pete  2
+Madalyn     Feil        Rep. Kurt Schrad  2
+Ronaldo     Douglas     Rep. Jeff Forten  2
+Cyrus       Feil        Rep. Mike McInty  2
+Rogers      Abshire     Sen. Lamar Alexa  3
+Brett       Pollich     Rep. Joe Baca     2
+Maryse      Moen        Sen. Bernie Sand  2
