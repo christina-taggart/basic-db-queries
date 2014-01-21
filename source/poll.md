@@ -99,12 +99,13 @@ GROUP BY 1
 HAVING COUNT(votes.voter_id) > 2
 ORDER BY COUNT(votes.voter_id) DESC;
 
-5) ******* WE ARE STUCK ON THIS ONE ****** NUMBER 5
+5)
 
-SELECT DISTINCT voters.first_name, voters.last_name, congress_members.name, votes.*, COUNT(votes.voter_id)
-FROM voters JOIN votes ON votes.voter_id = voters.id
-JOIN congress_members ON congress_members.id = votes.politician_id
-WHERE COUNT(DISTINCT votes.politician_id) > 1
-LIMIT 50
-;
+sqlite> SELECT voters.first_name, voters.last_name, congress_members.name, votes.*
+   ...> FROM voters JOIN votes ON votes.voter_id = voters.id
+   ...> JOIN congress_members ON congress_members.id = votes.politician_id
+   ...> GROUP BY voter_id, politician_id
+   ...> HAVING count(voter_id) > 1
+   ...> ;
+
 ```
