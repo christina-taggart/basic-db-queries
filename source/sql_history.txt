@@ -1,0 +1,10 @@
+SELECT COUNT(votes.id) FROM congress_members JOIN votes on congress_members.id = votes.politician_id WHERE congress_members.name = 'Sen. Olympia Snowe';
+SELECT sql FROM   (SELECT sql sql, type type, tbl_name tbl_name, name name, rowid x     FROM sqlite_master UNION ALL   SELECT sql, type, tbl_name, name, rowid FROM sqlite_temp_master) WHERE type!='meta' AND sql NOTNULL AND name NOT LIKE 'sqlite_%'ORDER BY substr(type,2,1), CASE type WHEN 'view' THEN rowid ELSE name END
+SELECT COUNT(votes.id) FROM congress_members JOIN votes on congress_members.id = votes.politician_id WHERE congress_members.name = 'Rep. Erik Paulsen';
+SELECT congress_members.id FROM congress_members WHERE name = 'Rep. Dan Benishek';
+SELECT name, location, grade_1996, COUNT(votes.id) FROM congress_members JOIN votes ON congress_members.id = votes.politician_id WHERE grade_current < 9;
+SELECT voters.first_name, voters.last_name, congress_members.name FROM congress_members JOIN votes ON congress_members.id=votes.politician_id JOIN voters ON votes.voter_id = voters.id WHERE votes.politician_id >1 GROUP BY voters.first_name;
+SELECT location, COUNT(votes.id) FROM congress_members JOIN votes ON congress_members.id = votes.politician_id GROUP BY location ORDER BY COUNT(votes.id) DESC LIMIT 10;
+SELECT location, COUNT(votes.id) FROM congress_members JOIN votes ON congress_members.id = votes.politician_id GROUP BY location ORDER BY COUNT(votes.id) DESC;
+SELECT congress_members.name, COUNT(votes.id) FROM congress_members JOIN votes on congress_members.id = votes.politician_id GROUP BY congress_members.name ORDER BY COUNT(votes.id) DESC;
+SELECT congress_members.name, COUNT(votes.id) FROM congress_members JOIN votes on congress_members.id = votes.politician_id GROUP BY congress_members.name ORDER BY COUNT(votes.id) ASC;
