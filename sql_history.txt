@@ -1,0 +1,121 @@
+SELECT COUNT(1) FROM congress_members join votes
+ON congress_members.id = politician_id
+WHERE congress_members.id = 524
+;
+SELECT COUNT(1) FROM congress_members join votes
+ON congress_members.id = politician_id
+WHERE congress_members.name like 'Olympia Snowe';
+SELECT COUNT(1) FROM congress_members join votes
+ON congress_members.id = politician_id
+WHERE congress_members.name like 'olympia snowe';
+select * from congress_members;
+SELECT COUNT(1) FROM congress_members join votes
+ON congress_members.id = politician_id
+WHERE congress_members.name like '%Olympia Snowe';
+SELECT COUNT(1) FROM congress_members join votes
+ON congress_members.id = politician_id
+WHERE congress_members.name like '%Erik Paulsen';
+SELECT congress_members.name, COUNT(1) FROM congress_members join votes
+ON congress_members.id = politician_id
+GROUP BY congress_members.name
+ORDER BY COUNT(1) DESC;
+SELECT congress_members.name, COUNT(1) FROM congress_members join votes
+ON congress_members.id = politician_id
+GROUP BY congress_members.name
+ORDER BY COUNT(1) ASC;
+SELECT congress_members.name, COUNT(1) FROM congress_members join votes
+ON congress_members.id = politician_id
+GROUP BY congress_members.name
+ORDER BY COUNT(1) DESC
+LIMIT 1;
+SELECT id FROM congress_members
+WHERE name like '%Dan Benishek';
+SELECT sql FROM   (SELECT sql sql, type type, tbl_name tbl_name, name name, rowid x     FROM sqlite_master UNION ALL   SELECT sql, type, tbl_name, name, rowid FROM sqlite_temp_master) WHERE type!='meta' AND sql NOTNULL AND name NOT LIKE 'sqlite_%'ORDER BY substr(type,2,1), CASE type WHEN 'view' THEN rowid ELSE name END
+select first_name, last_name, gender, party FROM voters join votes on voters.id = voter_id WHERE politician_id = 224;
+select name, location, grade_1996, count(1) FROM 
+congress_members JOIN votes ON congress_members.id = politician_id
+WHERE grade_current < 9
+GROUP BY name, location, grade_1996;
+select * from voters
+;
+select * from votes
+;
+select * from congress_members
+;
+SELECT sql FROM   (SELECT sql sql, type type, tbl_name tbl_name, name name, rowid x     FROM sqlite_master UNION ALL   SELECT sql, type, tbl_name, name, rowid FROM sqlite_temp_master) WHERE type!='meta' AND sql NOTNULL AND name NOT LIKE 'sqlite_%'ORDER BY substr(type,2,1), CASE type WHEN 'view' THEN rowid ELSE name END
+select location, count(1) from congress_members join votes on congress_members.id = politician_id
+group by location
+order by count(1) DESC
+limit 10;
+select first_name from (voters join votes on voters.id = voter_id) join congress_members on congress_members.id = politician_id
+where location like 'CA';
+select count(first_name) from (voters join votes on voters.id = voter_id) join congress_members on congress_members.id = politician_id
+where location like 'CA';
+select first_name, last_name from (voters join votes on voters.id = voter_id) join congress_members on congress_members.id = politician_id
+where location like 'CA';
+select first_name, last_name, location from (voters join votes on voters.id = voter_id) join congress_members on congress_members.id = politician_id
+
+;
+SELECT sql FROM   (SELECT sql sql, type type, tbl_name tbl_name, name name, rowid x     FROM sqlite_master UNION ALL   SELECT sql, type, tbl_name, name, rowid FROM sqlite_temp_master) WHERE type!='meta' AND sql NOTNULL AND name NOT LIKE 'sqlite_%'ORDER BY substr(type,2,1), CASE type WHEN 'view' THEN rowid ELSE name END
+select first_name, last_name, count(1) from voters join votes on voters.id = voter_id
+group by first_name, last_name
+
+;
+select first_name, last_name, count(1) from voters join votes on voters.id = voter_id
+group by first_name, last_name
+
+;
+select first_name, last_name, count(1) from voters join votes on voters.id = voter_id
+group by first_name, last_name;
+select first_name, last_name, count(1) from voters join votes on voters.id = voter_id
+group by first_name, last_name
+limit 10;
+select first_name, last_name, count(1) from voters join votes on voters.id = voter_id
+group by first_name, last_name
+limit 10;
+select first_name, last_name from (select first_name, last_name, count(1) from voters join votes on voters.id = voter_id
+group by first_name, last_name) where 'count(1)' > 2 ;
+select 'count(1)', first_name, last_name from (select first_name, last_name, count(1) from voters join votes on voters.id = voter_id
+group by first_name, last_name) where 'count(1)' > 2 ;
+select first_name, last_name, count(1) from voters join votes on voters.id = voter_id
+group by first_name, last_name;
+select first_name, last_name, count(1) from voters join votes on voters.id = voter_id
+group by first_name, last_name
+order by count(1) DESC;
+select first_name, last_name, count(1) from voters join votes on voters.id = voter_id
+group by first_name, last_name
+order by count(1) DESC
+limit 100;
+select first_name, last_name, count(1) from voters join votes on voters.id = voter_id
+group by first_name, last_name
+order by count(1) DESC
+limit 200;
+SELECT sql FROM   (SELECT sql sql, type type, tbl_name tbl_name, name name, rowid x     FROM sqlite_master UNION ALL   SELECT sql, type, tbl_name, name, rowid FROM sqlite_temp_master) WHERE type!='meta' AND sql NOTNULL AND name NOT LIKE 'sqlite_%'ORDER BY substr(type,2,1), CASE type WHEN 'view' THEN rowid ELSE name END
+select voter_id, count(1) from votes
+group by voter_id;
+select first_name, last_name, count(1) from voters join votes on voters.id = voter_id
+group by first_name, last_name
+having count(1) > 2;
+SELECT sql FROM   (SELECT sql sql, type type, tbl_name tbl_name, name name, rowid x     FROM sqlite_master UNION ALL   SELECT sql, type, tbl_name, name, rowid FROM sqlite_temp_master) WHERE type!='meta' AND sql NOTNULL AND name NOT LIKE 'sqlite_%'ORDER BY substr(type,2,1), CASE type WHEN 'view' THEN rowid ELSE name END
+alter table votes add column votes varchar(50);
+SELECT sql FROM   (SELECT sql sql, type type, tbl_name tbl_name, name name, rowid x     FROM sqlite_master UNION ALL   SELECT sql, type, tbl_name, name, rowid FROM sqlite_temp_master) WHERE type!='meta' AND sql NOTNULL AND name NOT LIKE 'sqlite_%'ORDER BY substr(type,2,1), CASE type WHEN 'view' THEN rowid ELSE name END
+alter table votes add column COMBO varchar(50);
+SELECT sql FROM   (SELECT sql sql, type type, tbl_name tbl_name, name name, rowid x     FROM sqlite_master UNION ALL   SELECT sql, type, tbl_name, name, rowid FROM sqlite_temp_master) WHERE type!='meta' AND sql NOTNULL AND name NOT LIKE 'sqlite_%'ORDER BY substr(type,2,1), CASE type WHEN 'view' THEN rowid ELSE name END
+select politician_id, count(1) from votes 
+group by politician_id;
+SELECT * FROM (
+    SELECT
+        CASE WHEN voter_id <= politician_id THEN voter_id ELSE politician_id END AS voter_id,
+        CASE WHEN voter_id <= politician_id THEN politician_id ELSE voter_id END AS politician_id
+    FROM
+        votes
+) Ordered
+GROUP BY
+    voter_id, politician_id;
+select politician_id, voter_id, count(1) FROM votes
+group by politician_id, voter_id
+Having count(1) > 1;
+Select first_name, last_name, name FROM ((select politician_id, voter_id, count(1) FROM votes
+group by politician_id, voter_id
+Having count(1) > 1) JOIN voters ON voter_id = voters.id) JOIN congress_members ON
+congress_members.id = politician_id;
