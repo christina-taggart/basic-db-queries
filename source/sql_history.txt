@@ -1,0 +1,87 @@
+SELECT sql FROM   (SELECT sql sql, type type, tbl_name tbl_name, name name, rowid x     FROM sqlite_master UNION ALL   SELECT sql, type, tbl_name, name, rowid FROM sqlite_temp_master) WHERE type!='meta' AND sql NOTNULL AND name NOT LIKE 'sqlite_%'ORDER BY substr(type,2,1), CASE type WHEN 'view' THEN rowid ELSE name END
+SELECT count(*) 
+FROM congress_members JOIN votes ON congress_members.id = politician_id
+WHERE politician_id=524;
+SELECT count(*) 
+FROM votes
+WHERE politician_id=(SELECT id 
+FROM congress_members
+WHERE name='Sen. Olympia Snowe');
+SELECT count(*) 
+FROM congress_members JOIN votes ON congress_members.id = politician_id
+WHERE congress_members.name='Rep. Erik Paulsen';
+SELECT politician_id, name, party, location, count(*)
+FROM congress_members JOIN votes ON congress_members.id = politician_id
+GROUP BY politician_id
+ORDER BY count(*) DESC;
+SELECT politician_id, name, party, location, count(*)
+FROM congress_members JOIN votes ON congress_members.id = politician_id
+GROUP BY politician_id
+ORDER BY count(*);
+SELECT sql FROM   (SELECT sql sql, type type, tbl_name tbl_name, name name, rowid x     FROM sqlite_master UNION ALL   SELECT sql, type, tbl_name, name, rowid FROM sqlite_temp_master) WHERE type!='meta' AND sql NOTNULL AND name NOT LIKE 'sqlite_%'ORDER BY substr(type,2,1), CASE type WHEN 'view' THEN rowid ELSE name END
+SELECT congress_members.name, count(*)
+FROM congress_members JOIN votes ON congress_members.id = politician_id
+GROUP BY politician_id
+ORDER BY count(*) DESC
+LIMIT 1;
+SELECT congress_members.name, congress_members.id, count(*)
+FROM congress_members JOIN votes ON congress_members.id = politician_id
+GROUP BY politician_id
+ORDER BY count(*) DESC
+LIMIT 1;
+SELECT first_name, last_name, party
+FROM voters JOIN votes on voters.id = voter_id
+WHERE politician_id=224;
+SELECT congress_members.name, congress_members.location, grade_1996, count(*) 
+FROM congress_members JOIN votes ON congress_members.id = politician_id
+WHERE grade_current < 9;
+SELECT sql FROM   (SELECT sql sql, type type, tbl_name tbl_name, name name, rowid x     FROM sqlite_master UNION ALL   SELECT sql, type, tbl_name, name, rowid FROM sqlite_temp_master) WHERE type!='meta' AND sql NOTNULL AND name NOT LIKE 'sqlite_%'ORDER BY substr(type,2,1), CASE type WHEN 'view' THEN rowid ELSE name END
+SELECT location, COUNT(1)
+FROM congress_members JOIN votes ON congress_members.id = politician_id
+GROUP BY location
+ORDER BY COUNT(1) DESC
+LIMIT 10;
+SELECT first_name, last_name
+FROM voters JOIN votes ON voter_id=voters.id 
+JOIN congress_members ON politician_id=congress_members.id
+WHERE congress_members.location IN (SELECT location
+FROM congress_members JOIN votes ON congress_members.id = politician_id
+GROUP BY location
+ORDER BY COUNT(1) DESC
+LIMIT 10);
+SELECT first_name, last_name
+FROM voters JOIN votes ON voter_id=voters.id 
+JOIN congress_members ON politician_id=congress_members.id
+WHERE congress_members.location IN (SELECT location
+FROM congress_members JOIN votes ON congress_members.id = politician_id
+GROUP BY location
+ORDER BY COUNT(1) DESC
+LIMIT 10);
+SELECT first_name, last_name
+FROM voters JOIN votes ON voter_id=voters.id 
+JOIN congress_members ON politician_id=congress_members.id
+WHERE congress_members.location IN (SELECT location
+FROM congress_members JOIN votes ON congress_members.id = politician_id
+GROUP BY location
+ORDER BY COUNT(1) DESC
+LIMIT 10);
+SELECT first_name, last_name
+FROM voters JOIN votes ON voter_id=voters.id 
+JOIN congress_members ON politician_id=congress_members.id
+WHERE 2<(
+SELECT COUNT(*)
+FROM voters JOIN votes ON voter_id=voters.id 
+JOIN congress_members ON politician_id=congress_members.id
+GROUP BY last_name, first_name
+);
+SELECT first_name, last_name, COUNT(*)
+FROM voters JOIN votes ON voter_id=voters.id
+JOIN congress_members ON politician_id=congress_members.id
+GROUP BY last_name;
+SELECT first_name, last_name, COUNT(*)
+FROM voters JOIN votes ON voter_id=voters.id
+JOIN congress_members ON politician_id=congress_members.id
+GROUP BY last_name
+ORDER BY last_name DESC;
+SELECT first_name, last_name, COUNT(*)
+FROM voters JOIN vot
